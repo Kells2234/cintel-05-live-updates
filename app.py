@@ -35,7 +35,8 @@ async def update_csv_files():
     while True:
         logger.info("Calling continuous updates ...")
         task1 = asyncio.create_task(update_csv_location())
-        await asyncio.gather(task1)
+        task2 = asyncio.create_task(update_csv_stock())
+        await asyncio.gather(task1, task2)
         await asyncio.sleep(60)  # wait for 60 seconds
 
 app_ui = ui.page_navbar(
