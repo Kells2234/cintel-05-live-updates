@@ -18,6 +18,7 @@ import shinyswatch          # pip install shinyswatch
 
 # Finally, import what we need from other local code files.
 from continuous_location import update_csv_location
+from continous_stock import update_csv_stock
 from mtcars_server import get_mtcars_server_functions
 from mtcars_ui_inputs import get_mtcars_inputs
 from mtcars_ui_outputs import get_mtcars_outputs
@@ -48,7 +49,7 @@ app_ui = ui.page_navbar(
     ),
     ui.nav(ui.a("About", href="https://github.com/Kells2234")),
     ui.nav(ui.a("GitHub", href="https://github.com/Kells2234/cintel-05-live-updates")),
-    ui.nav(ui.a("App", href="https://denisecase.shinyapps.io/cintel-05-live-updates/")),
+    ui.nav(ui.a("App", href="https://s557075ks.shinyapps.io/cintel-05-live-updates/")),
     ui.nav(ui.a("Plotly Express", href="https://plotly.com/python/line-and-scatter/")),
     ui.nav(ui.a("WeatherAPI", href="https://openweathermap.org/api")),
     ui.nav(ui.a("OneCallAPI", href="https://openweathermap.org/api/one-call-3")),
