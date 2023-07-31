@@ -1,8 +1,8 @@
 # Continuous Intelligence App
 
-- Repository: [cintel-05-live-updates](https://github.com/denisecase/cintel-05-live-updates)
+- Repository: [cintel-05-live-updates](https://github.com/Kells2234/cintel-05-live-updates)
 - Website: [cintel-05-live-updates](https://denisecase.github.io/cintel-05-live-updates/)
-- Author: [Denise Case](https://github.com/denisecase)
+- Author: [Kelly Simmons](https://github.com/Kells2234)
 
 -----
 

@@ -58,6 +58,7 @@ def get_mtcars_server_functions(input, output, session):
     # Initialize the values on startup
 
     reactive_location = reactive.Value("ELY MN")
+    reactive_stock = reactive.Value('Tesla Inc')
 
     # Previously, we had a single reactive dataframe to hold filtered results
     reactive_df = reactive.Value()

@@ -46,14 +46,14 @@ app_ui = ui.page_navbar(
             get_mtcars_outputs(),
         ),
     ),
-    ui.nav(ui.a("About", href="https://github.com/denisecase")),
-    ui.nav(ui.a("GitHub", href="https://github.com/denisecase/cintel-05-live-updates")),
+    ui.nav(ui.a("About", href="https://github.com/Kells2234")),
+    ui.nav(ui.a("GitHub", href="https://github.com/Kells2234/cintel-05-live-updates")),
     ui.nav(ui.a("App", href="https://denisecase.shinyapps.io/cintel-05-live-updates/")),
     ui.nav(ui.a("Plotly Express", href="https://plotly.com/python/line-and-scatter/")),
     ui.nav(ui.a("WeatherAPI", href="https://openweathermap.org/api")),
     ui.nav(ui.a("OneCallAPI", href="https://openweathermap.org/api/one-call-3")),
     ui.nav(ui.a("File_Reader", href="https://shiny.rstudio.com/py/api/reactive.file_reader.html")),
-    title=ui.h1("Case Dashboard"),
+    title=ui.h1("Simmons Dashboard"),
 )
 
 
