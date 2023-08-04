@@ -199,11 +199,11 @@ def get_mtcars_server_functions(input, output, session):
         plotly_express_plot.update_layout(title="Continuous Temperature (F)")
         return plotly_express_plot
 
-    ###############################################################
+    ##############################################################
 
-    ###############################################################
+    ##############################################################
         #Continous Stock Updates (string, table, chart)
-    ###############################################################
+    ##############################################################
 
     @reactive.Effect
     @reactive.event(input.MTCARS_STOCK_SELECT)
