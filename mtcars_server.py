@@ -201,6 +201,61 @@ def get_mtcars_server_functions(input, output, session):
 
     ###############################################################
 
+    ###############################################################
+        #Continous Stock Updates (string, table, chart)
+    ###############################################################
+
+    @reactive.Effect
+    @reactive.event(input.MTCARS_STOCK_SELECT)
+    def _():
+        """Set two reactive values (the stocks df) when user changes stock"""
+        reactive_stock.set(input.MTCARS_STOCK_SELECT())
+        # init_mtcars_stock_csv()
+        df = get_mtcars_stock_df()
+        logger.info(f"init reactive_stock_df len: {len(df)}")
+
+    @reactive.file_reader(str(csv_stocks))
+    def get_mtcars_stock_df():
+        """Return mtcars stocks pandas Dataframe."""
+        logger.info(f"READING df from {csv_stocks}")
+        df = pd.read_csv(csv_stocks)
+        logger.info(f"READING df len {len(df)}")
+        return df
+
+    @output
+    @render.text
+    def mtcars_stock_string():
+        """Return a string based on selected stock."""
+        logger.info("mtcars_stock_string starting")
+        selected = reactive_stock.get()
+        line1 = f"Recent Price of stock for {selected}."
+        line2 = "Updated once per minute for 15 minutes."
+        line3 = "Keeps the most recent 10 minutes of data."
+        message = f"{line1}\n{line2}\n{line3}"
+        logger.info(f"{message}")
+        return message
+
+    @output
+    @render.table
+    def mtcars_stock_table():
+        df = get_mtcars_stock_df()
+        # Filter the data based on the selected stock
+        df_stock = df[df["Company"] == reactive_stock.get()]
+        logger.info(f"Rendering price table with {len(df_stock)} rows")
+        return df_stock
+
+    @output
+    @render_widget
+    def mtcars_stock_chart():
+        df = get_mtcars_stock_df()
+        # Filter the data based on the selected stock
+        df_stock = df[df["Company"] == reactive_stock.get()]
+        logger.info(f"Rendering price chart with {len(df_stock)} points")
+        plotly_express_plot = px.line(
+            df_stock, x="Time", y="Price", color="Company", markers=True
+        )
+        plotly_express_plot.update_layout(title="Continuous Price")
+        return plotly_express_plot
     # return a list of function names for use in reactive outputs
     # Includes our 2 new selection strings and 2 new output widgets
 
