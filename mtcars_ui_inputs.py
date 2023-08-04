@@ -33,12 +33,6 @@ def get_mtcars_inputs():
             choices=['Tesla Inc', 'General Motors Company', 'Toyota Motor Corporation', 'Ford Motor Company', 'Honda Motor Co'],
             selected='Tesla Inc',
         ),
-        ui.input_select(
-            id="STOCK_COMPANY_SELECT",
-            label="Select a company",
-            choices=["Company A", "Company B", "Company C"],
-            selected="Company A",
-        ),
         ui.tags.hr(),
         ui.tags.section(
             ui.h3("MT Cars Table"),
