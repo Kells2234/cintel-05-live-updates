@@ -16,6 +16,14 @@ import platform
 import sys
 import os
 import datetime
+import pandas as pd
+import glob
+import os
+
+# Configure the logger
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    filename='data_processing.log')
 
 
 def get_source_directory_path(current_file):

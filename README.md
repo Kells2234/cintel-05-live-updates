@@ -6,32 +6,26 @@
 
 -----
 
-## Copy This Repository
+## Forex Trading Data
 
-Copy this starter repository into your own GitHub account by clicking the 'Fork' button at the top of this page. 
+### Purpose
 
------
+To create a Shinyapp.io that will continuously update the data concerning the seven most populare Forex currency pairs and provide visuals that will hopefully show trends in the data.
 
-## Customize Your Web App
+### STEP 1
 
-### Get the Code to your Local Machine
-    
-1. Open VS Code and from the menu, select **View** / **Command Palette**.
-1. Type "Git: Clone" in the command palette and select it.
-1. Enter the URL (web address) of your forked GitHub repository (make sure it contains your GitHub username - not denisecase).
-1. Choose a directory on your local machine (e.g., Documents folder) to store the project. 
-1. Avoid spaces in your directory and file names. If you have spaces, you'll need to use double quotes to keep the entire path recognized as a single string.
-1. If prompted, sign in to GitHub from VS Code.
+Find current Forex data that is in csv form.
+Data was found using Kaggle. URL is https://www.kaggle.com/datasets/diqiland/major-forex.
 
-### Make Changes in VS Code
+### STEP 2
 
-With your respository folder open in VS Code:
+Combine all seven CSV file in to one organized CSV file.
 
-1. Click on this README.md file for editing.
-1. Update the README.md file by changing your name in the author link above.
-1. Update the links in the README.md file to your username instead of denisecase.
+The CSV file contains seven of the most populare currency pairs. 
+Create a code that will concatenate all the files into one file and save it to the folder. 
+The first 10 lines were printed in the output as a QA.
 
-### Save Your Changes
+### Update nesseccary files that will create the crect app .
 
 1. After making changes, you want to send them back to GitHub.
 1. In VS Code, find the "Source Control" icon and click it.
