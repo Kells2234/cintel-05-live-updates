@@ -25,7 +25,7 @@ The CSV file contains seven of the most populare currency pairs.
 Create a code that will concatenate all the files into one file and save it to the folder. 
 The first 10 lines were printed in the output as a QA.
 
-### Update nesseccary files that will create the crect app .
+### Update nesseccary files that will create the create app .
 
 1. After making changes, you want to send them back to GitHub.
 1. In VS Code, find the "Source Control" icon and click it.
