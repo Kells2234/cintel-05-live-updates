@@ -17,11 +17,11 @@ from shiny import App, ui   # pip install shiny
 import shinyswatch          # pip install shinyswatch
 
 # Finally, import what we need from other local code files.
-from continuous_location import update_csv_location
-from continous_stock import update_csv_stock
-from mtcars_server import get_mtcars_server_functions
-from mtcars_ui_inputs import get_mtcars_inputs
-from mtcars_ui_outputs import get_mtcars_outputs
+from continuous_pairs import update_csv_location
+from currency_pairs import update_csv_stock
+from pairs_server import get_mtcars_server_functions
+from pairs_ui_inputs import get_mtcars_inputs
+from pairs_ui_outputs import get_mtcars_outputs, get_pairs_outputs
 from util_logger import setup_logger
 
 # Set up a logger for this file (see the logs folder to help with debugging).
@@ -35,28 +35,25 @@ async def update_csv_files():
     while True:
         logger.info("Calling continuous updates ...")
         task1 = asyncio.create_task(update_csv_location())
-        task2 = asyncio.create_task(update_csv_stock())
-        await asyncio.gather(task1, task2)
+        await asyncio.gather(task1)
         await asyncio.sleep(60)  # wait for 60 seconds
 
 app_ui = ui.page_navbar(
     shinyswatch.theme.superhero(),
     ui.nav(
-        "MT_Cars",
+        "Pairs",
         ui.layout_sidebar(
-            get_mtcars_inputs(),
-            get_mtcars_outputs(),
+            get_pairs_outputs(),
+            get_pairs_outputs(),
         ),
     ),
     ui.nav(ui.a("About", href="https://github.com/Kells2234")),
     ui.nav(ui.a("GitHub", href="https://github.com/Kells2234/cintel-05-live-updates")),
     ui.nav(ui.a("App", href="https://s557075ks.shinyapps.io/cintel-05-live-updates/")),
     ui.nav(ui.a("Plotly Express", href="https://plotly.com/python/line-and-scatter/")),
-    ui.nav(ui.a("WeatherAPI", href="https://openweathermap.org/api")),
-    ui.nav(ui.a("OneCallAPI", href="https://openweathermap.org/api/one-call-3")),
-    ui.nav(ui.a('YFinanceAPI', href='https://pypi.org/project/yfinance/')),
+    ui.nav(ui.a('ForexAPI', href="https://www.freeforexapi.com/")),
     ui.nav(ui.a("File_Reader", href="https://shiny.rstudio.com/py/api/reactive.file_reader.html")),
-    title=ui.h1("Simmons Dashboard"),
+    title=ui.h1("Forex Dashboard"),
 )
 
 
