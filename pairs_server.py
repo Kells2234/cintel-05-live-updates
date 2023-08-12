@@ -31,13 +31,12 @@ from util_logger import setup_logger
 from shiny import render, reactive
 from shinywidgets import render_widget
 
-from tkinter import Tk, Label, Button, OptionMenu, StringVar, Text, END, Scrollbar
+import tkinter as tk
 import threading
 import time
 import pandas as pd
 import os
 
-# Sample data fetching function (replace with your data fetching logic)
 def fetch_currency_data(currency_pair):
     # Replace this with your actual data fetching logic
     new_data = {
@@ -55,45 +54,32 @@ def update_csv_with_new_data(new_data):
     else:
         df.to_csv(csv_file, index=False)
 
+def update_data():
+    selected_currency = selected_currency_var.get()
+    new_data = fetch_currency_data(selected_currency)
+    update_csv_with_new_data(new_data)
+    data_text.insert(tk.END, f"Updated data for {selected_currency}: {new_data}\n")
+
+    # Schedule the next update
+    root.after(60000, update_data)
+
 def main():
-    root = Tk()
+    global root, selected_currency_var, data_text
+
+    root = tk.Tk()
     root.title("Currency Pair Data")
 
-    selected_currency_var = StringVar(root)
+    selected_currency_var = tk.StringVar(root)
     selected_currency_var.set("GBPUSD")  # Default currency pair
     currency_options = ["GBPUSD", "EURUSD", "USDJPY"]  # Add more options
-    currency_menu = OptionMenu(root, selected_currency_var, *currency_options)
+    currency_menu = tk.OptionMenu(root, selected_currency_var, *currency_options)
     currency_menu.pack()
 
-    def update_data():
-        selected_currency = selected_currency_var.get()
-        new_data = fetch_currency_data(selected_currency)
-        update_csv_with_new_data(new_data)
-        data_text.insert(END, f"Updated data for {selected_currency}: {new_data}\n")
-
-    update_button = Button(root, text="Update Data", command=update_data)
+    update_button = tk.Button(root, text="Update Data", command=update_data)
     update_button.pack()
 
-    data_text = Text(root)
+    data_text = tk.Text(root)
     data_text.pack()
-
-    def update_data_continuously():
-        try:
-            while True:
-                selected_currency = selected_currency_var.get()
-                new_data = fetch_currency_data(selected_currency)
-                update_csv_with_new_data(new_data)
-                data_text.insert(END, f"Continuous update for {selected_currency}: {new_data}\n")
-
-                # Wait for update_interval seconds before the next update
-                update_interval = 60
-                time.sleep(update_interval)
-
-        except Exception as e:
-            data_text.insert(END, f"ERROR: {e}\n")
-
-    data_update_thread = threading.Thread(target=update_data_continuously)
-    data_update_thread.start()
 
     root.mainloop()
 
